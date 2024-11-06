@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sky Transition with Stars</title>
+
+    <!-- CSS Load -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+  </head>
+  <body>
+    <div class="sky">
+      <div class="sky__phase sky__noon"></div>
+      <div class="sky__phase sky__dusk"></div>
+      <div class="sky__phase sky__midnight"></div>
+      <div class="sky__phase sky__dawn"></div>
+      <div class="lighthouse-container">
+        <img src="img/lighthouse.png" alt="등대" class="lighthouse" />
+        <div class="lightbeem"></div>
+      </div>
+
+      <div class="cloud-container"></div>
+      <!-- 별 요소 추가 -->
+      <canvas id="star-sky"></canvas>
+    </div>
+
+    <!-- 파도 효과 SVG -->
+    <svg
+      class="css-waves"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 24 150 28"
+      preserveAspectRatio="none"
+      shape-rendering="auto"
+    >
+      <defs>
+        <path
+          id="wave-pattern"
+          d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+        ></path>
+      </defs>
+      <g class="animated-waves">
+        <use href="#wave-pattern" x="100" y="0" fill="rgba(33,129,255,1)"></use>
+        <use
+          href="#wave-pattern"
+          x="100"
+          y="3"
+          fill="rgba(155,255,255,1)"
+        ></use>
+        <use
+          href="#wave-pattern"
+          x="100"
+          y="5"
+          fill="rgba(63,185,255,0.3)"
+        ></use>
+        <use
+          href="#wave-pattern"
+          x="100"
+          y="7"
+          fill="rgba(155,255,255,0.3)"
+        ></use>
+        <use
+          href="#wave-pattern"
+          x="100"
+          y="7"
+          fill="rgba(0,119,188,0.7)"
+        ></use>
+      </g>
+    </svg>
+    <!-- 배 이미지 추가 -->
+    <img src="img/boat.png" alt="배" class="boat" />
+
+    <svg
+      class="css-waves2"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 24 150 28"
+      preserveAspectRatio="none"
+      shape-rendering="auto"
+    >
+      <defs>
+        <path
+          id="wave-pattern"
+          d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+        ></path>
+      </defs>
+      <g class="animated-waves2">
+        <use
+          href="#wave-pattern"
+          x="100"
+          y="0"
+          fill="rgba(33,129,255,0.7)"
+        ></use>
+        <use
+          href="#wave-pattern"
+          x="100"
+          y="3"
+          fill="rgba(155,255,255,0.5)"
+        ></use>
+        <use
+          href="#wave-pattern"
+          x="100"
+          y="5"
+          fill="rgba(63,185,255,0.3)"
+        ></use>
+      </g>
+    </svg>
+    <!--타이틀 추가-->
+    <img src="img/title.png" alt="제목" class="title" />
+
+    <!-- JavaScript Load -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

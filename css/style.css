@@ -1,0 +1,305 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 전체 화면을 고정 크기로 설정 */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.sky {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+/* 하늘 배경 */
+.sky__phase {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 6s ease;
+  z-index: -1;
+}
+
+.sky__noon {
+  background: linear-gradient(
+    0deg,
+    rgba(205, 237, 246, 1),
+    rgba(0, 187, 255, 1)
+  );
+}
+.sky__dusk {
+  background: linear-gradient(0deg, rgba(255, 32, 110, 1), rgba(10, 0, 94, 1));
+}
+.sky__midnight {
+  background: linear-gradient(0deg, rgba(2, 0, 20, 1), rgba(10, 0, 94, 1));
+}
+.sky__dawn {
+  background: linear-gradient(
+    0deg,
+    rgba(254, 215, 102, 1),
+    rgba(205, 237, 246, 1)
+  );
+}
+
+#star-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 5s ease;
+}
+
+/* 파도 효과 SVG */
+.css-waves {
+  position: absolute;
+  width: 140%;
+  height: 280px;
+  margin-bottom: -20px;
+  min-height: 100px;
+  max-height: 400px;
+  top: 665px;
+  left: -600px;
+  z-index: 3;
+}
+
+.animated-waves > use {
+  animation: infinite-waves 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.animated-waves > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.animated-waves > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.animated-waves > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.animated-waves > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+.animated-waves > use:nth-child(5) {
+  animation-delay: -3s;
+  animation-duration: 15s;
+}
+
+@keyframes infinite-waves {
+  0% {
+    transform: translate3d(90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(-85px, 0, 0);
+  }
+}
+
+/* 파도 효과 SVG2222 */
+.css-waves2 {
+  position: absolute;
+  width: 140%;
+  height: 280px;
+  margin-bottom: -20px;
+  min-height: 100px;
+  max-height: 400px;
+  top: 700px;
+  left: -600px;
+  z-index: 5;
+}
+
+.animated-waves2 > use {
+  animation: infinite-waves 20s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.animated-waves2 > use:nth-child(1) {
+  animation-delay: -4s;
+  animation-duration: 7s;
+}
+.animated-waves2 > use:nth-child(2) {
+  animation-delay: -5s;
+  animation-duration: 10s;
+}
+.animated-waves2 > use:nth-child(3) {
+  animation-delay: -2s;
+  animation-duration: 13s;
+}
+
+@keyframes infinite-waves {
+  0% {
+    transform: translate3d(90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(-85px, 0, 0);
+  }
+}
+
+/*배 관련*/
+.boat {
+  position: absolute;
+  top: 470px;
+  left: -20%;
+  transform: translateX(-50%);
+  width: 320px;
+  z-index: 4;
+  animation: boat-enter 4s ease-out forwards,
+    boat-float 5s ease-in-out infinite 4s; /* 이동 후 떠다니기 애니메이션 */
+  transition: top 0.5s ease, left 0.5s ease; /* 부드러운 이동 효과 */
+}
+
+/* 배가 왼쪽에서 지정 위치로 이동하는 애니메이션 */
+@keyframes boat-enter {
+  0% {
+    left: -20%; /* 화면 왼쪽 밖 */
+  }
+  100% {
+    left: 20%; /* 최종 위치 */
+  }
+}
+
+/* 배의 위아래로 흔들림을 표현하는 애니메이션 */
+@keyframes boat-float {
+  0% {
+    transform: translate(-50%, 0px) rotate(0deg);
+  }
+  25% {
+    transform: translate(-45%, -40px) rotate(5deg);
+  }
+  50% {
+    transform: translate(-50%, 0px) rotate(0deg);
+  }
+  75% {
+    transform: translate(-55%, -40px) rotate(-5deg);
+  }
+  100% {
+    transform: translate(-50%, 0px) rotate(0deg);
+  }
+}
+
+/* 타이틀 이미지 고정 스타일 */
+.title {
+  position: fixed; /* 화면에 고정 */
+  top: 0; /* 화면 상단에서 10px 내려서 배치 */
+  right: 0; /* 화면 오른쪽에서 10px 안쪽에 배치 */
+  z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+
+  opacity: 0; /* 초기 상태에서 숨김 */
+  animation: fadeIn 2s ease-in forwards; /* 2초 동안 fade-in 효과 */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.boat,
+.css-waves,
+.css-waves2,
+.title {
+  transition: filter 10s ease, opacity 10s ease; /* 전환 시간을 3초로 설정 */
+}
+
+.cloud-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  overflow: hidden;
+  z-index: 1; /* 배경과 타이틀 사이 */
+}
+
+.cloud {
+  position: absolute;
+  top: 50%; /* JavaScript로 랜덤 설정됨 */
+  left: 100%; /* 화면 오른쪽에서 시작 */
+  opacity: 0.4; /* 살짝 투명하게 설정 */
+  animation-timing-function: linear; /* 일정한 속도로 이동 */
+  animation-fill-mode: forwards; /* 애니메이션 후 위치 유지 */
+}
+
+@keyframes moveCloud {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -600px;
+  } /* 화면 왼쪽 밖으로 사라짐 */
+}
+
+/* 등대 이미지 */
+
+.lighthouse-container {
+  position: absolute;
+  animation: moveLighthouse 60s linear infinite;
+  left: 140%;
+}
+.lighthouse {
+  position: relative;
+  bottom: -520px;
+  width: 1800px;
+  z-index: 2;
+}
+
+.lightbeem {
+  background-color: rgb(255, 224, 170);
+  border-radius: 20%;
+  position: relative;
+  bottom: -105px;
+  box-shadow: 0 0 100px rgba(253, 255, 153, 1);
+  left: 885px;
+  height: 30px;
+  width: 30px;
+  z-index: 1;
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 40px rgba(255, 223, 153, 1),
+      0 0 50px rgba(255, 251, 29, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 40px rgba(255, 191, 148, 1),
+      0 0 50px rgba(255, 249, 232, 0.9);
+  }
+}
+/* 등대의 수평 이동 애니메이션 */
+@keyframes moveLighthouse {
+  0% {
+    left: 140%;
+  }
+  100% {
+    left: -4000px;
+  }
+}
+
+/* 빛 회전 애니메이션 */
+@keyframes rotateLight {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
